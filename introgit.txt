@@ -1,0 +1,6 @@
+vamos aprender git
+https://roots.io/bedrock/ 
+
+ssh  git
+git@github.com:Flavio-Andrade-FOA/hello-word.git
+
