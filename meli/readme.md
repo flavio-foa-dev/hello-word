@@ -90,7 +90,7 @@ Os códigos de status das respostas HTTP indicam se uma requisição HTTP foi co
            6.6.6. 505 HTTP Version Not Supported .....................64
 
 ### API
-API é uma sigla para `A`pplication `P`rogramming `I`interface. ou seja , interface de programação de aplicação. isso que dizer que uma apié, basicamente, qualquer coisa que permita a comuunicação, de forma programatica, com uma determinada aplicação.
+API é uma sigla para `A`pplication `P`rogramming `I`interface. ou seja , interface de programação de aplicação. isso que dizer que uma api é , basicamente, qualquer coisa que permita a comuunicação, de forma programatica, com uma determinada aplicação.
 Um tipo muito comum  de API sao as APIs HTTP, que permitem que código se comuniquem com aplicações através de requisições HTTP. È desse tipo de API que boa parte da web é feita
 
 Elas são extramamente importante nos dias de hoje , em que temos multiplos clients(web, apps mobile, tvs, smartwatches etc) se comunicando com o mesmo servidor! È assim que a nestflix esta sempre sincronizada entre seu celular e seu computador e sua televisão
@@ -108,3 +108,70 @@ Pra ilustrar, a coisa toda funciona como a imagem abaixo:
 
 Imagem que demonstra o panorama de uma aplicação web
 Daqui pra frente, vamos focar nos conceitos e na construção das APIs, visto que uma API bem feita, assim como um quadro de pedidos bem organizado, pode ser a chave para uma aplicação (ou um restaurante) bem sucedida. 🧑‍🍳💻
+
+## Express
+O express é um framework Node.js criado para facilitar a criação de APIs HTTP com node. Ele nos fornece uma serie de recursos e abstração que facilitam a vida na hora  de decidir quais requisiçoes tratar, como tratalas, quais regras de negocio aplicar afins
+
+O Frameork foi construido pensando em um padrao de contrução de APis Chamado de Rest, que você vai estudar mais a frente. Seu objetivo é nos ajudar a contruir APIs de forma mais facil, essencialmente nos permitindo criar Apis altamente funcionais com metade do trabalho  que teriamos para fazer isso na mão
+
+existe outras ferramentas semelhantes no mercado, mas o Express é largamente adotado na comunidade hoje, e dois so motivos sâo:
+- ele foi lançado no final de 2010, ou seja é um framework maduro e testadoi em batalha
+- ele é um "unopinionated frameork"(frameorwk sem opinião). isso significa que ele não impões um padrão de desenvolvimento na hora de escrever o codigo
+
+Hoje, o Express faz parte da Node.js Foundation . Isso demonstra o quão relevante ele é para a comunidade.
+### exemplo em express
+
+const express = require('express');
+
+const app = express(); // 1
+
+app.get('/hello', handleHelloWorldRequest); // 2
+
+app.listen(3001, () => {
+  console.log('Aplicação ouvindo na porta 3001');
+}); // 3
+
+function handleHelloWorldRequest(req, res) {
+  res.status(200).send('Hello World!'); // 4
+}
+
+## Cabeçalhos HTTP
+
+Os cabeçalhos HTTP permitem que o cliente e o servidor passem informações adicionais com a solicitação ou a resposta HTTP. Um cabeçalho de solicitação é composto por seu nome case-insensitive (não diferencia letras maiúsculas e minúsculas), seguido por dois pontos ':' e pelo seu valor (sem quebras de linha).  Espaços em branco antes do valor serão ignorados.
+Cabeçalhos proprietários personalizados podem ser adicionados usando o prefixo 'X-', mas essa convenção foi descontinuada em Junho de 2012, devido aos inconvenientes que causou quando os campos não-padronizados tornaram-se padronizados na RFC 6648; outros estão listados em um registro IANA, cujo o conteúdo original foi definido na RFC 4229. O IANA também mantém o registro das propostas de novas mensagens de cabeçalhos HTTP.
+[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers]
+
+## Uma visão geral do HTTP
+HTTP é um protocolo (protocol) que permite a obtenção de recursos, como documentos HTML. É a base de qualquer troca de dados na Web e um protocolo cliente-servidor, o que significa que as requisições são iniciadas pelo destinatário, geralmente um navegador da Web. Um documento completo é reconstruído a partir dos diferentes sub-documentos obtidos, como por exemplo texto, descrição do layout, imagens, vídeos, scripts e muito mais.
+
+Clientes e servidores se comunicam trocando mensagens individuais (ao contrário de um fluxo de dados). As mensagens enviadas pelo cliente, geralmente um navegador da Web, são chamadas de solicitações (requests), ou também requisições, e as mensagens enviadas pelo servidor como resposta são chamadas de respostas (responses).
+Projetado no início da década de 1990, o protocolo HTTP é extensível e evoluiu ao longo do tempo. Atua na camada de aplicação e é enviado sobre o protocoloTCP, ou em uma conexão TCP criptografada com TLS, embora qualquer protocolo de transporte confiável possa, teoricamente, ser usado. Devido à sua extensibilidade, ele é usado não só para buscar documentos de hipertexto, mas também imagens e vídeos ou publicar conteúdo em servidores, como nos resultados de formulário HTML (veja os elementos <html> e <form>). O HTTP também pode ser usado para buscar partes de documentos para atualizar páginas da Web sob demanda.
+
+### Componentes de sistemas baseados em HTTP
+[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview]
+
+### Cookies HTTP
+Um cookie HTTP (um cookie web ou cookie de navegador) é um pequeno fragmento de dados que um servidor envia para o navegador do usuário. O navegador pode armazenar estes dados e enviá-los de volta na próxima requisição para o mesmo servidor. Normalmente é utilizado para identificar se duas requisições vieram do mesmo navegador — ao manter um usuário logado, por exemplo. Ele guarda informações dinâmicas para o protocolo HTTP sem estado.
+
+Cookies são usados principalmente para três propósitos:
+
+Gerenciamento de sessão
+Logins, carrinhos de compra, placar de jogos ou qualquer outra atividade que deva ser guardada por um servidor.
+Personalização
+Preferências de usuário, temas e outras configurações.
+Rastreamento
+Registro e análise do comportamento de um usuário.
+
+Os cookies eram usados para armazenamento geral no lado do cliente. Embora isso fosse aceitável quando eram a única forma de armazenar dados no cliente, atualmente é recomendável utilizar APIs de armazenamento mais modernas. Os cookies são enviados em todas as requisições, por isso podem prejudicar a performance (especialmente em conexões móveis).  APIs modernas de armazenamento no cliente são Web storage API (localStorage e sessionStorage) e IndexedDB.
+
+### Criando cookies
+Ao receber uma requisição HTTP, um servidor pode enviar um cabeçalho Set-Cookie com a resposta. O  cookie normalmente é armazenado pelo navegador, então o cookie é enviado  com as requisições feitas para o mesmo servidor dentro  do cabeçalho HTTP Cookie. Uma data de expiração ou duração pode ser especificada, e após esta data o cookie não é mais enviado. Adicionalmente, restrições para um domínio específico e caminho podem ser configuradas, limitando para onde o cookie é enviado.
+
+### Os cabeçalhos Set-Cookie e Cookie
+O cabeçalho HTTP de resposta Set-Cookie envia cookies do servidor para o cliente. Um cookie simples é configurado da seguinte forma:
+
+Set-Cookie: <cookie-name>=<cookie-value>
+Este cabeçalho de servidor informa ao cliente para armazenar um cookie.
+
+[https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies]
+[http://expressjs.com/en/resources/middleware/cookie-session.html]
