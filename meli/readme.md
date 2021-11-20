@@ -88,3 +88,23 @@ Os códigos de status das respostas HTTP indicam se uma requisição HTTP foi co
            6.6.4. 503 Service Unavailable ............................63
            6.6.5. 504 Gateway Timeout ................................63
            6.6.6. 505 HTTP Version Not Supported .....................64
+
+### API
+API é uma sigla para `A`pplication `P`rogramming `I`interface. ou seja , interface de programação de aplicação. isso que dizer que uma apié, basicamente, qualquer coisa que permita a comuunicação, de forma programatica, com uma determinada aplicação.
+Um tipo muito comum  de API sao as APIs HTTP, que permitem que código se comuniquem com aplicações através de requisições HTTP. È desse tipo de API que boa parte da web é feita
+
+Elas são extramamente importante nos dias de hoje , em que temos multiplos clients(web, apps mobile, tvs, smartwatches etc) se comunicando com o mesmo servidor! È assim que a nestflix esta sempre sincronizada entre seu celular e seu computador e sua televisão
+nos projetos de front-end, voĉe integrou varias APIs com suas aplicações.
+
+### Contextualizando
+
+A partir de agora, você irá criar APIs, que vão receber requisições e devolver dados , passando por validações , regras de negócio , acesso ao banco de dados , etc.
+Se compararmos uma aplicação web a um restaurante, o Front-End é a área das mesas , garçons e garçonetes: é onde a comunicação direta com clientes acontece, onde os pedidos são anotados, e também a parte que leva as receitas da cozinha até a mesa das pessoas.
+O Back-End, por sua vez, é cozinha . É onde uma pessoa cozinheira, mediante o recebimento de um pedido, vai preparar os ingredientes , montar a receita e devolvê-lo para que uma pessoa atendente apresente esse prato a quem o pediu . É no Back-End que os dados serão filtrados , manipulados e preparados para envio ao Front-end. Esse, por sua vez, se encarrega de apresentá-los a quem fez o pedido.
+Ainda na analogia da cozinha, uma API seria o quadro de pedidos que os setores de "Cozinha" e "Atendimento" usam para se comunicar:
+Quando o client envia uma requisição para o Back-End , é como se uma pessoa atendente anotasse o pedido em um papel e o colocasse no balcão para ser preparado pela cozinha .
+Quando o servidor envia a resposta para a requisição do client , ele mostra essas informações ao usuário via Front-End. É como se a cozinha entregasse o prato que foi pedido para que o atendente o leve para a mesa da pessoa cliente.
+Pra ilustrar, a coisa toda funciona como a imagem abaixo:
+
+Imagem que demonstra o panorama de uma aplicação web
+Daqui pra frente, vamos focar nos conceitos e na construção das APIs, visto que uma API bem feita, assim como um quadro de pedidos bem organizado, pode ser a chave para uma aplicação (ou um restaurante) bem sucedida. 🧑‍🍳💻
