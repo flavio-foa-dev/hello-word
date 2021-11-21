@@ -175,3 +175,59 @@ Este cabeçalho de servidor informa ao cliente para armazenar um cookie.
 
 [https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Cookies]
 [http://expressjs.com/en/resources/middleware/cookie-session.html]
+
+
+## construir uma API: o REST RESTful
+Antes de começarmos, vamos entender a diferença entre REST e RESTful: RESTful é, basicamente, um web service que segue as regras definidas pelo padrão REST.
+
+Pronto, agora vamos à definição formal:
+Representational State Transfer (REST), em português Transferência de Estado Representacional, é um estilo de arquitetura de software, controlado pelo W3C , que define um conjunto de restrições a serem usadas para a criação de APIs.
+Uma maneira interessante de explicar é a seguinte:
+Imagine que você está em um jantar. Existem algumas coisas que você deveria fazer, como:
+Comer com a boca fechada;
+Não colocar os cotovelos na mesa;
+Usar os talheres corretamente;
+Não arrotar.
+
+O REST deve ser visto da mesma forma: um conjunto de boas práticas. Quando você está construindo uma API, existem algumas normas que você deve seguir para ser "educado" (RESTful).
+Para o REST, uma aplicação é um conjunto de recursos que podem ter seu estado representado de alguma forma. Ao consumir esses recursos, você está transferindo as informações sobre esse estado para o cliente (uma requisição GET , por exemplo) ou fazendo uma alteração nele (um POST , PUT ou DELETE ). Daí o nome Transferência de Estado Representacional , ou seja, estamos transferindo uma representação do estado de algum recurso.
+
+Mas o que é um Recurso, afinal?
+Um recurso, em REST, é uma abstração da informação. Dito isso, qualquer coisa que possa ser nomeada pode ser um recurso. Por exemplo:
+Usuários;
+Produtos;
+Compras;
+Etc.
+Todos os exemplos acima podem ser considerados recursos.
+No universo de Star Wars existem vários planetas. Na SWAPI , podemos chamar um endpoint para listar todos os planetas ou apenas um. Nesse caso, um planeta é um recurso , e planetas é uma coleção de recursos .
+
+## As 6 restrições para ser RESTful
+A arquitetura REST define seis restrições, chamadas constraints , que devem ser respeitadas para que sua API seja RESTful .
+ 1 -  Interface uniforme ( Uniform Interface )
+ A interface de comunicação entre seu servidor e seu cliente deve ser definida e seguida à risca, através de um padrão, para que ela se mantenha consistente. Dessa forma, essa "constraint", se seguida à risca, simplifica e desacopla a sua arquitetura.
+Essa interface inclui o endpoint , o tipo de retorno e o uso dos verbos HTTP .
+
+O recurso a ser acessado/alterado deve ser identificado pelo endpoint da requisição. Exemplo: https://swapi.dev/api/planets/:id . Nessa URL, vemos que o recurso que queremos acessar, planet , é facilmente identificado.
+Usar plural ou singular? Não importa. O importante é manter o padrão.
+
+Tipo do retorno
+Talvez você já tenha visto um header chamado Content-type nas respostas de requisições. Ele serve para dizer, para o nosso cliente, que tipo de conteúdo estamos retornando.
+Se estamos retornando um JSON, enviamos o header como Content-type: application/json . Se fosse HTML, seria Content-type: text/html , e por aí vai.
+Alguns formatos comuns são JSON , XML e JavaScript .
+
+Esse tópico é, literalmente, sobre manter esses retornos consistentes. Se o cliente pede ou envia informação no formato JSON, você deve processar e retornar mantendo o formato JSON. Se um erro em um endpoint retorna os campos code , error e message , todos os erros devem retornar, pelo menos, esses campos. Se uma requisição ao endpoint de uma coleção ( GET /posts , por exemplo), retorna um Array, todos os endpoints de coleção devem retornar Arrays. Se, por exemplo, quando realizamos uma requisição GET /products , recebemos um array de produtos, ao realizar a requisição GET /sales , não devemos receber um JSON no formato { "sales": [{ ... }] } , já que esse comportamento é inconsistente com o do endpoint GET /products .
+Dessa forma, ao consumir um endpoint da sua API, é possível até mesmo deduzir o comportamento dos demais endpoints, dispensando "tentativa e erro".
+
+A ação que vamos realizar no recurso deve ser identificada pelo verbo HTTP da requisição. Para o REST, os principais verbos HTTP são POST , GET , PUT e DELETE , e cada um realiza uma ação, dependendo se for enviado para o endpoint de um recurso ou de uma coleção .
+
+Respostas
+Respostas são sempre obrigatórias. Nunca deixe seu cliente sem resposta, mesmo que ela não tenha um corpo.
+Existem boas práticas em relação aos status code que nosso servidor envia como resposta. Temos uma variedade de códigos que devemos utilizar em situações específicas:
+1xx: Informação;
+2xx: Sucesso;
+3xx: Redirecionamento;
+4xx: Erro do cliente;
+5xx: Erro no servidor.
+
+### 2 - Arquitetura cliente-servidor
+vocẽ ja ouviu falar muito arquitetura  clientw servidor, nao é ? De  termos uma  API e um cliente desacoplado? è exatamente exemplo
