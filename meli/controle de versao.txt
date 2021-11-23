@@ -32,6 +32,7 @@ git commit  / assim abre o editor para deixar uma mesg bem claras
 // git branch // ramificação
 
 git checkou -b "nomeda branch"
+se eu colocar D assim , ele deleta na force brute
 
 git merge
 git rebase
@@ -40,3 +41,37 @@ git rebase
 git conflict // resolvent
 
 git branch -d(apaga a branch)"nome da branch"
+
+listar todas as branches
+git branch -vv
+
+Trabalhando REMOTES
+gitHub, Bitbucker, GitLab  =  privados e public
+
+git remote add [origin, pages] endereço do repositorio
+
+git remote set-url [origin, pages] endereço do repositorio
+podemos mudar o endereço de um remoto ja configurado .
+
+podemos remover remotos
+git remote remover origin
+
+podemos ter uma visao geral dos remotes
+git remote show origin
+
+podemos listar todos remotes configurados
+git remote -v
+git diff   // verificar quais mudanças foram feitas
+
+
+git fetch origin --all //buscas todos os remotes configurados
+git pull  origin master
+
+listar todos os remotes na maquina
+git remote -r
+git push origin  --delete 'branch-remote'
+
+
+controle de versao do git parte 2
+git init === iniciar um directory git  criando branch master
+.gitignore ===  ignora tudo estiver neste documento
