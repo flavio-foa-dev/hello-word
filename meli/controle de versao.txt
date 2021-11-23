@@ -1,0 +1,42 @@
+Introdução de versão do git
+
+controlando as versões do codigo, precisanmos versionar o codigo .
+Modelo destribuidos
+Baseado em snapshots
+Basicamente offline
+Forte foco em integridade dos dados e velocidade
+
+Working Directory
+  area acessivel ao usuario para trabalhar
+Staging Area
+Repository Location,
+
+comando
+
+git config user.name "nome"
+git config user.email "email"
+git config core.editor vim // configura o vim, editor
+
+git init / iniciar um projeto local
+git clone / clonar um prjeto no  github para maquina local,
+
+git status / estado atual do projeto , branch, e modification to save
+
+git commit -m "messagem do commit" -
+git commit  / assim abre o editor para deixar uma mesg bem claras
+
+1 linha titulo // adiciona botao de delete home , deixar no imperativo.
+
+2 descrição do task,
+
+// git branch // ramificação
+
+git checkou -b "nomeda branch"
+
+git merge
+git rebase
+
+
+git conflict // resolvent
+
+git branch -d(apaga a branch)"nome da branch"
