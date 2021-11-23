@@ -75,3 +75,6 @@ git push origin  --delete 'branch-remote'
 controle de versao do git parte 2
 git init === iniciar um directory git  criando branch master
 .gitignore ===  ignora tudo estiver neste documento
+
+
+Clean Code e logging
